@@ -29,7 +29,7 @@ const TimerWidget = {
       display.size.width - screenWidth,
       display.size.height - screenHeight
     );
-    TimerWidget.widgetWindow.loadURL(`file://${__dirname}/app.html#/widget`);
+    TimerWidget.widgetWindow.loadURL(`file://${__dirname}/app.html?widget`);
   },
   show : ()=> {
     TimerWidget.widgetWindow.show();
