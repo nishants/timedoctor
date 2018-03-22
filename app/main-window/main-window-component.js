@@ -1,4 +1,3 @@
-// @flow
 import React  from 'react';
 import {connect} from 'react-redux'
 import TimeStamp from './../timer/time-stamp';
@@ -52,6 +51,6 @@ const mapDispatchToProps = (dispatch)=> {
     stopTimer: ()=> stopTimer(dispatch),
     startTimer: ()=> startTimer(dispatch)
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

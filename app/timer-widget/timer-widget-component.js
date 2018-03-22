@@ -12,7 +12,7 @@ const TimerWidget = ({time, running, stopTimer, startTimer, hideCounterWidget})=
   return (
     <div>
       <div className={('timer-widget ' + (running ? 'timer-running': ''))}>
-        <span class='drag-drop-icon'>
+        <span className='drag-drop-icon'>
           <img src={dragIcon}/>
         </span>
         <span className='widget-timer-actions'>
