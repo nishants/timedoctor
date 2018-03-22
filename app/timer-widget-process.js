@@ -1,4 +1,5 @@
 import electron from 'electron';
+const { ipcMain } = require('electron')
 
 const
   BrowserWindow = electron.BrowserWindow,
@@ -28,8 +29,7 @@ const TimerWidget = {
       display.size.width - screenWidth,
       display.size.height - screenHeight
     );
-    console.log(display.size.width, display.size.height);
-    TimerWidget.widgetWindow.loadURL(`file://${__dirname}/app.html#counter`);
+    TimerWidget.widgetWindow.loadURL(`file://${__dirname}/app.html#/widget`);
   },
   show : ()=> {
     TimerWidget.widgetWindow.show();
@@ -42,9 +42,16 @@ const TimerWidget = {
   },
 
   toggleView: ()=> {
-    console.log('toggle', TimerWidget.hidden)
     TimerWidget.hidden ? TimerWidget.show() : TimerWidget.hide();
   }
 };
+
+ipcMain.on('show-widget', () => {
+  TimerWidget.show();
+});
+
+ipcMain.on('hide-widget', () => {
+  TimerWidget.hide();
+});
 
 export default  TimerWidget;

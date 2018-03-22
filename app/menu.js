@@ -4,8 +4,9 @@ import { app, Menu, shell, BrowserWindow } from 'electron';
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
 
-  constructor(mainWindow: BrowserWindow) {
+  constructor(mainWindow: BrowserWindow, TimerWidget) {
     this.mainWindow = mainWindow;
+    this.TimerWidget = TimerWidget;
   }
 
   buildMenu() {
@@ -37,6 +38,10 @@ export default class MenuBuilder {
         }])
         .popup(this.mainWindow);
     });
+  }
+
+  toggleWidget(){
+    this.TimerWidget.toggleView();
   }
 
   buildDarwinTemplate() {

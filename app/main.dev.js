@@ -13,6 +13,7 @@
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
 import Timer from './timer';
+import TimerWidget from './timer-widget-process.js';
 
 let mainWindow = null;
 
@@ -68,6 +69,9 @@ app.on('ready', async () => {
 
   Timer.addListenerWindow(mainWindow.webContents);
   mainWindow.loadURL(`file://${__dirname}/app.html`);
+  TimerWidget.load();
+  Timer.addListenerWindow(TimerWidget.widgetWindow.webContents);
+  TimerWidget.show();
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
@@ -83,6 +87,6 @@ app.on('ready', async () => {
     mainWindow = null;
   });
 
-  const menuBuilder = new MenuBuilder(mainWindow);
+  const menuBuilder = new MenuBuilder(mainWindow, TimerWidget);
   menuBuilder.buildMenu();
 });
