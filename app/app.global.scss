@@ -1,0 +1,29 @@
+$theme-color: #283f5b;
+$theme-light-color: #6983a0;
+$theme-super-light-color: #edf0f7;
+$theme-positive-color: #48c073;
+$theme-dark-text-color: #8f9eb0;
+$white-shade: #fbfbfb;
+$padding: 10px;
+
+$default-font-family: 'Roboto', sans-serif;
+$mono-font-family: 'Roboto Mono', monospace;
+
+.resize-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import "~font-awesome/css/font-awesome.css";
+
+body {
+  font-family: $default-font-family;
+  padding: 0px;
+  margin: 0px;
+}
+
+@import "./timer-widget/timer-widget.scss";
+@import "./main-window/main-window";

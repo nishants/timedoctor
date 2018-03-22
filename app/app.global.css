@@ -1,43 +1,163 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
-@import "~font-awesome/css/font-awesome.css";
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url(~font-awesome/css/font-awesome.css);
+.resize-container:after, .timer-widget:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 body {
+  font-family: "Roboto", sans-serif;
+  padding: 0px;
+  margin: 0px; }
+
+.timer-widget {
+  color: #fbfbfb;
+  background-color: #283f5b;
+  width: 130px;
+  height: 30px;
+  line-height: 30px; }
+.timer-widget .drag-drop-icon {
+  width: 20px;
+  float: left;
+  text-align: center; }
+.timer-widget .drag-drop-icon img {
+  display: inline-block; }
+.timer-widget .widget-timer-actions {
+  float: left;
+  padding-right: 5px; }
+.timer-widget .widget-timer-actions .stop, .timer-widget .widget-timer-actions .play {
+  line-height: inherit;
+  color: #edf0f7; }
+.timer-widget .runnning-indicator {
+  float: left;
+  display: block;
+  padding-right: 5px; }
+.timer-widget .runnning-indicator::after {
+  display: inline-block;
+  content: ' ';
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  vertical-align: middle;
+  background-color: #48c073; }
+.timer-widget .time-stamp {
+  float: left;
+  font-size: small;
+  line-height: 30px;
+  padding: 0px 5px; }
+.timer-widget .close-timer {
+  float: left;
+  display: inline-block;
+  text-align: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: black;
+  margin-top: 7.5px;
+  margin-right: 5px;
+  line-height: 10px; }
+.timer-widget .close-timer > img {
+  display: inline-block;
+  height: 5px; }
+
+.timer-widget.timer-running .widget-timer-actions .stop {
+  display: block; }
+.timer-widget.timer-running .widget-timer-actions .play {
+  display: none; }
+
+.timer-widget:not(.timer-running) .runnning-indicator::after {
+  background-color: black; }
+.timer-widget:not(.timer-running) .widget-timer-actions .stop {
+  display: none; }
+.timer-widget:not(.timer-running) .widget-timer-actions .play {
+  display: block; }
+
+.main-window {
+  color: #fbfbfb;
+  text-align: center; }
+.main-window .timer-top-bar {
+  text-align: left;
+  padding: 0px 10px;
+  font-size: small;
+  height: 50px;
+  line-height: 50px;
+  background-color: #6983a0; }
+.main-window .timer-top-bar .time-doctor-logo {
+  display: inline-block;
   position: relative;
-  color: white;
-  height: 100vh;
-  background-color: #232c39;
-  background-image: linear-gradient(45deg, rgba(0, 216, 255, 0.5) 10%, rgba(0, 1, 127, 0.7));
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
-}
-
-p {
-  font-size: 24px;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 1;
-  text-decoration: none;
+  top: 2.5px;
+  padding: 0px 2.5px;
+  height: 15px;
+  width: 15px; }
+.main-window .timer-top-bar .time-doctor-logo img {
+  display: block;
+  height: 100%;
+  width: 100%; }
+.main-window .time-stamp-container {
+  display: inline-block;
+  padding: 40px 20px 10px;
+  font-family: "Roboto Mono", monospace; }
+.main-window .time-stamp-container .time-stamp {
+  float: left; }
+.main-window .time-stamp-container .time-stamp .time-stamp-unit, .main-window .time-stamp-container .time-stamp .time-stamp-separator {
+  font-size: 25px; }
+.main-window .time-stamp-container .time-stamp .time-stamp-unit > .time-stamp-unit-digit {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #6983a0;
+  margin-right: 2px; }
+.main-window .time-stamp-container .time-stamp .time-stamp-separator {
+  position: relative;
+  left: -1px;
+  color: #6983a0; }
+.main-window .time-stamp-container .timer-actions {
+  position: relative;
+  top: -5px;
+  margin-left: 30px;
+  float: left;
+  display: block;
+  background-color: #6983a0;
   cursor: pointer;
-}
+  height: 43px;
+  width: 43px;
+  border-radius: 50%; }
+.main-window .time-stamp-container .timer-actions .timer-button {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%; }
+.main-window .time-stamp-container .timer-actions .timer-button > img {
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 5.5px);
+  left: calc(50% - 5.5px); }
+.main-window .timer-bottom-bar {
+  height: 60px;
+  text-align: left;
+  padding: 15px 10px 0px;
+  font-size: small;
+  box-sizing: border-box;
+  background-color: #edf0f7;
+  color: #8f9eb0; }
+.main-window .timer-bottom-bar label {
+  display: block;
+  line-height: 20px; }
+.main-window .timer-bottom-bar .worked-today {
+  font-weight: 500; }
+
+.main-window.timer-running .timer-top-bar {
+  background-color: #48c073; }
+.main-window.timer-running .time-stamp-container .time-stamp .time-stamp-unit > .time-stamp-unit-digit {
+  background-color: #48c073; }
+.main-window.timer-running .time-stamp-container .time-stamp .time-stamp-separator {
+  color: #48c073; }
+.main-window.timer-running .time-stamp-container .timer-actions {
+  background-color: #48c073; }
+.main-window.timer-running .time-stamp-container .timer-button.play {
+  display: none; }
+
+.main-window:not(.timer-running) .time-stamp-container .timer-button.stop {
+  display: none; }
+
+/*# sourceMappingURL=app.global.css.map */
