@@ -1,0 +1,91 @@
+$timer-widget-height: 30px;
+$timer-widget-width : 130px;
+
+.timer-widget {
+  color: $white-shade;
+  background-color: $theme-color;
+  width: $timer-widget-width;
+  height: $timer-widget-height;
+  line-height: $timer-widget-height;
+  @extend .resize-container;
+
+  .drag-drop-icon{
+    width: 20px;
+    float: left;
+    text-align: center;
+    img{
+      display: inline-block;
+    }
+  }
+  .widget-timer-actions{
+    float: left;
+    padding-right: $padding/2;
+    .stop, .play{
+      line-height: inherit;
+      color: $theme-super-light-color;
+    }
+  }
+  .runnning-indicator{
+    float: left;
+    display: block;
+    padding-right: 5px;
+    &::after{
+      display: inline-block;
+      content: ' ';
+      height: 5px;
+      width : 5px;
+      border-radius: 50%;
+      vertical-align: middle;
+      background-color: $theme-positive-color;
+    }
+  }
+  .time-stamp{
+    float: left;
+    font-size: small;
+    line-height: $timer-widget-height;
+    padding: 0px $padding/2;
+  }
+  .close-timer{
+    float: left;
+    display: inline-block;
+    text-align: center;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: black;
+    margin-top: 7.5px;
+    margin-right: $padding/2;
+    line-height: 10px;
+    > img{
+      display: inline-block;
+      height: 5px;
+
+    }
+  }
+}
+
+.timer-widget.timer-running{
+  .widget-timer-actions{
+    .stop{
+      display: block;
+    }
+    .play{
+      display: none;
+    }
+  }
+}
+.timer-widget:not(.timer-running){
+  .runnning-indicator{
+    &::after{
+      background-color: black;
+    }
+  }
+  .widget-timer-actions{
+    .stop{
+      display: none;
+    }
+    .play{
+      display: block;
+    }
+  }
+}

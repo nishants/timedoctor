@@ -1,0 +1,135 @@
+$bar-height: 50px;
+$text-color: $white-shade;
+$logo-small-size: 15px;
+
+$time-unit-height: 25px;
+
+.main-window{
+  color: $text-color;
+  text-align: center;
+
+  .timer-top-bar{
+    text-align: left;
+    padding: 0px $padding;
+    font-size: small;
+    height: $bar-height;
+    line-height: $bar-height;
+    background-color: $theme-light-color;
+
+    .time-doctor-logo{
+      display: inline-block;
+      position: relative;
+      top  : 2.5px;
+      padding: 0px $padding/4;
+      height : $logo-small-size;
+      width  : $logo-small-size;
+      img{
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .time-stamp-container{
+    display: inline-block;
+    padding: $padding*4 $padding*2 $padding;
+    font-family: $mono-font-family;
+
+    .time-stamp {
+      float: left;
+      .time-stamp-unit, .time-stamp-separator {
+        font-size: $time-unit-height;
+      }
+
+      .time-stamp-unit > .time-stamp-unit-digit {
+        border-radius: 5px;
+        padding: $padding/2 $padding;
+        background-color: $theme-light-color;
+        margin-right: 2px;
+      }
+
+      .time-stamp-separator{
+        position: relative;
+        left: -1px;
+        color: $theme-light-color;
+      }
+    }
+
+    .timer-actions{
+      position: relative;
+      top: -$padding/2;
+      margin-left: $padding*3;
+
+      float: left;
+      display: block;
+      background-color: $theme-light-color;
+      cursor: pointer;
+      height: 43px;
+      width : 43px;
+      border-radius: 50%;
+
+      .timer-button{
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        $image-height: 11px;
+        > img{
+          display: inline-block;
+          position: absolute;
+          top: calc(50% - #{$image-height/2});
+          left: calc(50% - #{$image-height/2});
+        }
+      }
+    }
+
+  }
+  .timer-bottom-bar{
+    height: $bar-height + $padding;
+    text-align: left;
+    padding: 1.5*$padding $padding 0px;
+    font-size: small;
+    box-sizing: border-box;
+
+    background-color: $theme-super-light-color;
+    color: $theme-dark-text-color;
+    label{
+      display: block;
+      line-height: $padding*2;
+    }
+    .worked-today{
+      font-weight: 500;
+    }
+  }
+}
+
+.main-window.timer-running{
+  .timer-top-bar{
+    background-color :$theme-positive-color;
+  }
+  .time-stamp-container{
+    .time-stamp{
+      .time-stamp-unit > .time-stamp-unit-digit{
+        background-color :$theme-positive-color;
+      }
+      .time-stamp-separator{
+        color :$theme-positive-color;
+      }
+    }
+    .timer-actions{
+      background-color :$theme-positive-color;
+    }
+    .timer-button.play{
+      display: none;
+    }
+  }
+}
+
+.main-window:not(.timer-running){
+
+  .time-stamp-container{
+    .timer-button.stop{
+      display: none;
+    }
+  }
+}
