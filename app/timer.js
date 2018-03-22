@@ -1,4 +1,5 @@
 const { ipcMain } = require('electron')
+const isOpened = (win)=> !win.isDestroyed() ;
 
 const Timer = {
   listeners: [],
@@ -12,17 +13,17 @@ const Timer = {
   start: ()=> {
     if(Timer._interval) return;
     Timer._interval = setInterval(Timer.update, 1000);
-    Timer.windows.forEach(win=> win.send('timer-started'));
+    Timer.windows.filter(isOpened).forEach(win=> win.send('timer-started'));
   },
   update: ()=> {
     ++Timer._time;
     // ipcMain.send('time-updated', Timer._time);
-    Timer.windows.forEach(win=> win.send('time-updated', Timer._time));
+    Timer.windows.filter(isOpened).forEach(win=> win.send('time-updated', Timer._time));
   },
   stop : ()=> {
     clearInterval(Timer._interval)
     Timer._interval = null;
-    Timer.windows.forEach(win=> win.send('timer-stopped'));
+    Timer.windows.filter(isOpened).forEach(win=> win.send('timer-stopped'));
   }
 };
 
