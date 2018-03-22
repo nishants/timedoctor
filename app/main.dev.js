@@ -12,6 +12,7 @@
  */
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
+import Timer from './timer';
 
 let mainWindow = null;
 
@@ -65,6 +66,7 @@ app.on('ready', async () => {
     height: 728
   });
 
+  Timer.addListenerWindow(mainWindow.webContents);
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   // @TODO: Use 'ready-to-show' event
